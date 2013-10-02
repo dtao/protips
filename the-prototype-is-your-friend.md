@@ -1,8 +1,8 @@
-The `this` keyword in JavaScript *can* be really confusing. That I won't dispute. And so a lot of developers I really respect actually advocate for avoiding it altogether, which is definitely possible. You can sort of ignore the existence of JavaScript's prototype system and follow your own object-building approach:
+The `this` keyword in JavaScript *can* be really confusing. That I won't dispute. And so a lot of developers I really respect actually advocate for avoiding it altogether, which is [definitely possible](http://blog.thepete.net/blog/2012/02/06/class-less-javascript/). You can sort of ignore the existence of JavaScript's prototype system and follow your own object-building approach:
 
     function createValueObject(value) {
       return {
-        get: function() { return value; }
+        get: function () { return value; }
       };
     }
 
