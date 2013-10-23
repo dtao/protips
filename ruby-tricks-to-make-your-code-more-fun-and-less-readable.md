@@ -140,7 +140,7 @@ def count(*args)
   puts "Received #{args.length} arguments."
 end
 
-count(1, 2, 'foo', nil, false) # => 5
+count(1, 2, 'foo', nil, false) # => Received 5 arguments.
 ```
 
 A helpful way to think of splatting is that it takes a value or an array of values, and evaluates them as if they'd been expressed literally in your code.
@@ -174,8 +174,10 @@ sum(1, 2, 3)
 There's a lot more you can do with splats. For example, say you have an array and you want to assign the first element to one variable, and the rest to another:
 
 ```ruby
-arr = (1..10).to_a
+arr = [1, 2, 3, 4, 5]
 first, *rest = arr
+
+# Now first is 1, and rest is [2, 3, 4, 5]
 ```
 
 You can also use `*` on a single value, which will evaluate to the value if it isn't `nil` or otherwise will act as if it weren't there at all. Here's what I mean:
@@ -202,7 +204,8 @@ module Enumerable
     hash = {}
     self.each do |e|
 
-      # If (yield e) returns TWO values, then val will take on the second one;
+      # If (yield e) returns TWO values, then
+      # val will take on the second one;
       # otherwise, it will be assigned the value of e.
       key, val = [*(yield e), e]
 
@@ -227,7 +230,7 @@ e.class # => Enumerator
 One thing that's helpful to know here is that you can chain these together. For example, suppose you want to `map` with some logic that needs an element's index. You could always do it the sloppy way:
 
 ```ruby
-i       = 0
+i = 0
 results = array.map do |e|
   # Do something w/ e and i
   i += 1
@@ -254,3 +257,5 @@ pairs = [1, 2, 3, 4, 5, 6].each_slice(2).map(&:reverse)
 Well, I think that's enough for now. Maybe I'll write another protip with even more quirky Ruby features down the road.
 
 If you learned even one new thing from this protip, I'm glad to have taught you something! Even if it isn't that useful. On the other hand, if you already knew all of this and I just wasted ~5 minutes of your time, my sincere apologies. But it was all free, so... you get what you pay for, eh?
+
+Actually, here's an idea: if you didn't learn anything from this protip, how about *you* teach *me* something in a comment? That would be pretty sweet.
